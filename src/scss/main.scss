@@ -1,3 +1,65 @@
 @import "base";
 @import "layout";
-@import "modules/example";
+@import "modules/roller";
+
+//======>> BTW colros <<======//
+$btw-black: #000;
+$btw-white: #fff;
+$btw-pink: #ff5f9b;
+$btw-green: #004c26;
+
+//======>> aiaiai colors <<======//
+$ai-green: #72ff78;
+
+//======>> Font sizes <<======//
+$font-size-p: 24px;
+$font-size-h1: 128px;
+$font-size-h2: 128px;
+$font-size-h3: 48px;
+$font-size-span-em: 36px;
+
+@mixin font($weight, $size, $line-height) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+}
+
+//======>> Fonts <<======//
+@font-face {
+  font-family: "GT America";
+  src: url();
+}
+
+@font-face {
+  font-family: "GT America Mono";
+  src: url();
+}
+
+@font-face {
+  font-family: "HAL Timezone italic";
+  src: url();
+}
+
+$font-family: "GT America", sans-serif;
+$font-family-Mono: "GT America Mono", monospace;
+$font-family-italic: "HAL Timezone italic", serif;
+
+* {
+  @include font(400, $font-size-p, 1.5);
+}
+
+h1 {
+  @include font(700, $font-size-h1, 1.5);
+}
+
+h2 {
+  @include font(700, $font-size-h2, 1.5);
+}
+
+h3 {
+  @include font(700, $font-size-h3, 1.5);
+}
+
+span {
+  @include font(700, $font-size-span-em, 1.5);
+}
