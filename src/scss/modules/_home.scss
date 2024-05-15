@@ -1,0 +1,22 @@
+.news {
+  background: url(../img/grain.png) 10px 10px repeat,
+    radial-gradient(50% 100% at 50% 50%, $btw-pink 0%, $btw-green 100%);
+  background-size: contain;
+  background-position: center;
+  background-blend-mode: overlay;
+  height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 70px;
+  h2 {
+    color: $btw-white;
+    line-height: 1.2;
+  }
+  span {
+    color: $btw-white;
+    opacity: 0.5;
+  }
+}

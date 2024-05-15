@@ -1,6 +1,57 @@
 /* ====================================
 // css variables
 // ==================================== */
+//======>> BTW colros <<======//
+$btw-black: #000;
+$btw-white: #fff;
+$btw-pink: #ff5f9b;
+$btw-green: #004c26;
+
+//======>> aiaiai colors <<======//
+$ai-green: #72ff78;
+
+//======>> Font sizes <<======//
+$font-size-p: 24px;
+$font-size-h1: 128px;
+$font-size-h2: 128px;
+$font-size-h3: 48px;
+$font-size-span-em: 36px;
+
+@mixin font($weight, $size, $line-height, $letter-spacing: -1.2px) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+$font-base: "GT America", sans-serif;
+$font-base-Md: "GT America Md", sans-serif;
+$font-Mono: "GT America Mono", monospace;
+$font-italic: "HAL Timezone italic", serif;
+
+* {
+  @include font(400, $font-size-p, 1.5, -1.2px);
+  font-family: $font-base;
+  cursor: none !important;
+}
+
+h1 {
+  @include font(600, $font-size-h1, 1.5, -6.4);
+  font-family: $font-base-Md;
+}
+
+h2 {
+  @include font(400, $font-size-h2, 1.5, -6.4);
+}
+
+h3 {
+  @include font(400, $font-size-h3, 1.5, -2.4);
+}
+
+span {
+  @include font(700, $font-size-span-em, 1.5, normal);
+  font-family: $font-italic;
+}
 
 /* ====================================
 // reset rules
@@ -20,13 +71,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
   font-size: 1rem;
   line-height: 1.25;
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 img,
@@ -39,3 +92,31 @@ video {
 /* ====================================
 // base rules
 // ==================================== */
+.lobster {
+  display: block;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 10000;
+  @include font(400, 36px, 1.5, -2.4);
+  &:hover {
+    animation: wiggle 0.1ms infinite linear;
+  }
+  @keyframes wiggle {
+    0% {
+      transform: rotate(0deg) scale(1.1);
+    }
+    25% {
+      transform: rotate(-10deg) scale(1);
+    }
+    50% {
+      transform: rotate(0deg) scale(1.1);
+    }
+    75% {
+      transform: rotate(10deg) scale(1.2);
+    }
+    100% {
+      transform: rotate(0deg) scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,33 @@
+footer {
+  padding: 133px 35px 102px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  ul {
+    margin-top: 40px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    li {
+      a {
+        transition: color 0.3s;
+        &:hover {
+          color: $btw-pink;
+        }
+      }
+    }
+  }
+  .col-3 {
+    width: calc(100% / 12 * 3);
+  }
+  .col-5 {
+    width: calc(100% / 12 * 5);
+    display: flex;
+    .col-inset {
+      width: calc(100% / 12 * 6);
+    }
+  }
+  .col-2 {
+    width: calc(100% / 12 * 2);
+  }
+}
