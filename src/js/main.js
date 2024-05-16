@@ -106,3 +106,20 @@ function updateNumber(element, number) {
 
 var interval = setInterval(updateTime, 1000);
 updateTime();
+
+// const rollers = document.querySelectorAll(".roller");
+
+// rollers.forEach((roller) => {
+//   const rollerItems = roller.querySelectorAll(".roller-head-container");
+//   let currentIndex = 0;
+
+//   const nextIndex = (currentIndex + 1) % rollerItems.length;
+//   const currentRollerItem = rollerItems[currentIndex];
+
+//   gsap.fromTo(
+//     currentRollerItem,
+//     { left: "-100%", opacity: 0 },
+//     { left: "0%", opacity: 1, duration: 1, ease: "back.out", repeat: 0 }
+//   );
+//   currentIndex = nextIndex;
+// });

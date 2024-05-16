@@ -15,8 +15,8 @@
   .clock {
     height: 20vh !important;
     color: white;
-    font-size: 19vh !important;
     line-height: 20.4vh !important;
+    font-size: map-get($font-size-h2, "desktop");
     font-family: $font-Mono;
     display: flex;
     position: relative;
@@ -66,5 +66,33 @@
   span {
     color: $btw-white;
     opacity: 0.5;
+  }
+}
+
+.partner {
+  padding: 70px 35px 0;
+  h3 {
+    margin-bottom: 50px;
+  }
+  .partner-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+
+    width: 100%;
+    animation: transLogo linear 10s infinite;
+    img {
+      width: 100%;
+      max-width: 150px;
+    }
+    @keyframes transLogo {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-89%);
+      }
+    }
   }
 }

@@ -14,6 +14,19 @@
     flex-direction: row;
     align-items: baseline;
     gap: 30px;
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(1, 0.44, 0, 1);
+    animation: moveIn 1.5s cubic-bezier(1, 0.44, 0, 1);
+  }
+  @keyframes moveIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
   &::before {
     content: " ";
@@ -23,12 +36,22 @@
     top: 0;
     left: -100%;
     background-color: $btw-pink;
+    border-top-right-radius: calc(25vh / 2);
+    border-bottom-right-radius: calc(25vh / 2);
     z-index: -1;
-    transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+    transition: all 0.3s cubic-bezier(1, 0.44, 0, 1);
   }
   &:hover {
+    .roller-head-container {
+      transform: translateX(20px);
+    }
     &::before {
       left: 0;
+    }
+  }
+  &.aiaiai {
+    &::before {
+      background-color: $ai-green;
     }
   }
 }
