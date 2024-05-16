@@ -32,33 +32,77 @@ function onMouseMove(e) {
   });
 }
 
-let $placeholder = document.querySelector(".placeholder");
-const countdownDate = new Date("September 1, 2024 00:00:00").getTime();
+var daysContainer = document.querySelector(".days");
+var hoursContainer = document.querySelector(".hours");
+var minutesContainer = document.querySelector(".minutes");
+var secondsContainer = document.querySelector(".seconds");
+var tickElements = Array.from(document.querySelectorAll(".tick"));
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const distance = countdownDate - now;
+var endDate = new Date(new Date().getFullYear(), 8, 1); // 1er septembre de l'année en cours
+var tickState = true;
 
-  // Calculate days, hours, minutes, and seconds
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+function updateTime() {
+  var now = new Date();
+  var timeDifference = endDate - now;
 
-  // Display the countdown
-  $placeholder.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  if (timeDifference <= 0) {
+    // Le compte à rebours est terminé
+    clearInterval(interval);
+    return;
+  }
 
-  // Check if the countdown has ended
-  if (distance < 0) {
-    clearInterval(countdownInterval);
-    $placeholder.textContent = "Countdown has ended";
+  var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24)).toString();
+  var hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24).toString();
+  var minutes = Math.floor((timeDifference / (1000 * 60)) % 60).toString();
+  var seconds = Math.floor((timeDifference / 1000) % 60).toString();
+
+  updateContainer(daysContainer, days);
+  updateContainer(hoursContainer, hours);
+  updateContainer(minutesContainer, minutes);
+  updateContainer(secondsContainer, seconds);
+}
+
+function tick() {
+  tickElements.forEach((t) => t.classList.toggle("tick-hidden"));
+}
+
+function updateContainer(container, newTime) {
+  var time = newTime.split("");
+
+  while (time.length < 2) {
+    time.unshift("0");
+  }
+
+  // Handle containers with more than 2 digits
+  if (container.children.length > 2) {
+    var diff = container.children.length - time.length;
+    for (var i = 0; i < diff; i++) {
+      time.unshift("0");
+    }
+  }
+
+  var children = Array.from(container.children);
+  for (var i = 0; i < children.length; i++) {
+    if (children[i].lastElementChild.textContent !== time[i]) {
+      updateNumber(children[i], time[i]);
+    }
   }
 }
 
-// Update the countdown every second
-const countdownInterval = setInterval(updateCountdown, 1000);
+function updateNumber(element, number) {
+  var second = element.lastElementChild.cloneNode(true);
+  second.textContent = number;
 
-// Initial update
-updateCountdown();
+  element.appendChild(second);
+  element.classList.add("move");
+
+  setTimeout(function () {
+    element.classList.remove("move");
+  }, 990);
+  setTimeout(function () {
+    element.removeChild(element.firstElementChild);
+  }, 990);
+}
+
+var interval = setInterval(updateTime, 1000);
+updateTime();

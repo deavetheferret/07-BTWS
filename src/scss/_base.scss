@@ -30,8 +30,6 @@ $font-Mono: "GT America Mono", monospace;
 $font-italic: "HAL Timezone italic", serif;
 
 * {
-  @include font(400, $font-size-p, 1.5, -1.2px);
-  font-family: $font-base;
   cursor: none !important;
 }
 
