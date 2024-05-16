@@ -51,23 +51,64 @@ $font-italic: "HAL Timezone italic", serif;
 }
 
 h1 {
-  @include font(400, map-get($font-size-h2, "desktop"), 1.5, -6.4);
+  @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
   font-family: $font-base-Md;
 }
 
 h2 {
-  @include font(400, map-get($font-size-h2, "desktop"), 1.5, -6.4);
+  @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
   font-family: $font-base;
 }
 
 h3 {
-  @include font(400, map-get($font-size-h3, "desktop"), 1.5, -2.4);
+  @include font(400, map-get($font-size-h3, "desktop"), 1, -2.4);
   font-family: $font-base;
 }
 
 span {
-  @include font(700, map-get($font-size-span-em, "desktop"), 1.5, normal);
+  @include font(700, map-get($font-size-span-em, "desktop"), 1, normal);
   font-family: $font-italic;
+}
+
+p {
+  @include font(400, map-get($font-size-p, "desktop"), 1, -2.4);
+  font-family: $font-base;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    @include font(400, map-get($font-size-h2, "mobile"), 1, -6.4);
+  }
+  h2 {
+    @include font(400, map-get($font-size-h2, "mobile"), 1, -6.4);
+  }
+  h3 {
+    @include font(400, map-get($font-size-h3, "mobile"), 1, -2.4);
+  }
+  span {
+    @include font(700, map-get($font-size-span-em, "mobile"), 1, normal);
+  }
+  p {
+    @include font(400, map-get($font-size-p, "mobile"), 1, -2.4);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    @include font(400, map-get($font-size-h2, "tablet"), 1, -6.4);
+  }
+  h2 {
+    @include font(400, map-get($font-size-h2, "tablet"), 1, -6.4);
+  }
+  h3 {
+    @include font(400, map-get($font-size-h3, "tablet"), 1, -2.4);
+  }
+  span {
+    @include font(700, map-get($font-size-span-em, "tablet"), 1, normal);
+  }
+  p {
+    @include font(400, map-get($font-size-p, "tablet"), 1, -2.4);
+  }
 }
 
 /* ====================================

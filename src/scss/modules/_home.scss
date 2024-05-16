@@ -11,16 +11,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 0 70px;
+  padding: 0 35px;
   .clock {
-    height: 20vh !important;
+    height: map-get($font-size-h2, "desktop") !important;
     color: white;
-    line-height: 20.4vh !important;
-    font-size: map-get($font-size-h2, "desktop");
-    font-family: $font-Mono;
+    @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
+    font-family: $font-Mono !important;
     display: flex;
     position: relative;
-
     overflow: hidden;
   }
 
@@ -28,7 +26,7 @@
   .clock::after {
     content: "";
     width: 100%;
-    height: 3vh;
+    height: 10%;
     background: linear-gradient(to top, transparent, black);
     position: absolute;
     z-index: 2;
@@ -43,12 +41,15 @@
     display: flex;
   }
 
-  .tick {
-    line-height: 17vh;
-  }
-
   .tick-hidden {
     opacity: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .clock {
+      font-size: calc(map-get($font-size-h2, "mobile") / 1.5) !important;
+      height: map-get($font-size-h2, "mobile") !important;
+    }
   }
 
   .move {
@@ -71,6 +72,7 @@
 
 .partner {
   padding: 70px 35px 0;
+  overflow: hidden;
   h3 {
     margin-bottom: 50px;
   }

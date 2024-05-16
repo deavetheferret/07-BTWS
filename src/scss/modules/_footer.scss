@@ -31,3 +31,14 @@ footer {
     width: calc(100% / 12 * 2);
   }
 }
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    gap: 40px;
+    .col-5 {
+      width: 100%;
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+}
