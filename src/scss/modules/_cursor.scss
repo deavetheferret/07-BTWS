@@ -12,8 +12,8 @@
   transition-timing-function: cubic-bezier(1, 0, 0, 1);
 
   &.focus-cursor {
-    width: 20px;
-    height: 20px;
+    width: calc(40px / 2);
+    height: calc(40px / 2);
     transform: translate(-50%, -50%);
   }
 }
@@ -22,9 +22,9 @@
   position: fixed;
   border-radius: 50%;
   position: fixed;
-  z-index: 10000;
-  height: 20px;
-  width: 20px;
+  z-index: 9999;
+  height: 15px;
+  width: 15px;
   background-color: $btw-black;
   transform: translate(-50%, -50%);
   transition: opacity 0.1s;
@@ -32,5 +32,11 @@
   pointer-events: none;
   &.focus-cursor {
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cursor {
+    display: none;
   }
 }

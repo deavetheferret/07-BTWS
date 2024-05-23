@@ -1,74 +1,58 @@
 .news {
-  // background: url(../img/grain.png) 10px 10px repeat,
+  // background: url(../img/glass-tunnel-layer-back.png) center,
   //   radial-gradient(50% 100% at 50% 50%, $btw-pink 0%, $btw-green 100%);
-  background-size: contain;
-  background-color: $btw-black;
-  background-position: center;
-  background-blend-mode: overlay;
-  height: 50vh;
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-blend-mode: overlay;
 
+  height: calc(100vh / 5 * 3);
+  color: $btw-black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   padding: 0 35px;
-  .clock {
-    height: map-get($font-size-h2, "desktop") !important;
-    color: white;
-    @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
-    font-family: $font-Mono !important;
-    display: flex;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .clock::before,
-  .clock::after {
-    content: "";
-    width: 100%;
-    height: 10%;
-    background: linear-gradient(to top, transparent, black);
-    position: absolute;
-    z-index: 2;
-  }
-
-  .clock::after {
-    bottom: 0;
-    background: linear-gradient(to bottom, transparent, black);
-  }
-
-  .clock > div {
-    display: flex;
-  }
-
-  .tick-hidden {
-    opacity: 0;
-  }
+  position: relative;
 
   @media screen and (max-width: 768px) {
-    .clock {
+    & {
       font-size: calc(map-get($font-size-h2, "mobile") / 1.5) !important;
-      height: map-get($font-size-h2, "mobile") !important;
     }
+
+    // .placeholder,
+    // .roller-subtitle {
+    //   left: 0 !important;
+    // }
   }
 
-  .move {
-    animation: move linear 1s infinite;
+  @media screen and (min-width: 465px) and (max-width: 1024px) {
+    & {
+      font-size: calc(map-get($font-size-h2, "tablet") / 1.5) !important;
+    }
+
+    // .placeholder,
+    // .roller-subtitle {
+    //   left: 30% !important;
+    // }
   }
 
-  @keyframes move {
-    from {
-      transform: translateY(0vh);
-    }
-    to {
-      transform: translateY(-20vh);
-    }
-  }
-  span {
-    color: $btw-white;
-    opacity: 0.5;
-  }
+  // .foreground-layer {
+  //   height: 100%;
+  //   width: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   pointer-events: none;
+  //   z-index: 1;
+  //   background: url(../img/glass-tunnel-layer-front.png) center;
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   background-blend-mode: overlay;
+  // }
 }
+
+$n: 10;
+$w: 3;
 
 .partner {
   padding: 70px 35px 0;
@@ -76,25 +60,41 @@
   h3 {
     margin-bottom: 50px;
   }
-  .partner-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 100px;
 
-    width: 100%;
-    animation: transLogo linear 10s infinite;
+  .partner-list {
+    display: grid;
+    --d: 25s;
+    width: 100vw;
+    position: relative;
+
+    mask: linear-gradient(
+      90deg,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+
     img {
       width: 100%;
-      max-width: 150px;
-    }
-    @keyframes transLogo {
-      0% {
-        transform: translateX(0);
+      max-width: 200px;
+      grid-area: 1/1;
+      object-fit: cover;
+      animation: transLogo var(--d) linear infinite;
+      @for $i from 2 to ($n + 1) {
+        &:nth-child(#{$i}) {
+          animation-delay: calc(#{(1 - $i) / $n}* var(--d));
+        }
       }
-      100% {
-        transform: translateX(-89%);
-      }
     }
+  }
+}
+
+@keyframes transLogo {
+  #{100*($n - 1)/$n}% {
+    transform: translate($w * (1 - $n) * 100%);
+  }
+  #{100*($n - 1)/$n + .01}% {
+    transform: translate($w * 100%);
   }
 }

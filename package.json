@@ -1,7 +1,7 @@
 {
-  "name": "eikon-parcel-starter",
-  "version": "1.0.0",
-  "description": "Web projects starterkit for eikon studenrs",
+  "name": "BTW.studio",
+  "version": "1.0.5",
+  "description": "Website of BTW.studio",
   "scripts": {
     "clean:output": "rimraf dist",
     "clean:cache": "rimraf .parcel-cache",

@@ -9,6 +9,8 @@ footer {
     display: flex;
     flex-direction: column;
     li {
+      @include font(500, map-get($font-size-p, "desktop"), 1, normal);
+      font-family: $font-base;
       a {
         transition: color 0.3s;
         &:hover {

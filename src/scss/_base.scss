@@ -1,39 +1,42 @@
 /* ====================================
-// css variables
+// CSS Variables
 // ==================================== */
-//======>> BTW colros <<======//
+
+// BTW colors
 $btw-black: #000;
 $btw-white: #fff;
 $btw-pink: #ff5f9b;
 $btw-green: #004c26;
 
-//======>> aiaiai colors <<======//
+// aiaiai colors
 $ai-green: #72ff78;
 
-//======>> Font sizes <<======//
-
+// Font sizes
 $font-size-p: (
-  "desktop": 1.5rem,
+  "desktop": 1rem,
   "mobile": 1rem,
-  "tablet": 1.25rem,
+  "tablet": 1rem,
 );
 
 $font-size-h2: (
   "desktop": 8rem,
-  "mobile": 4rem,
+  "mobile": 3rem,
   "tablet": 5rem,
 );
+
 $font-size-h3: (
   "desktop": 3rem,
   "mobile": 2rem,
   "tablet": 2.5rem,
 );
+
 $font-size-span-em: (
   "desktop": 2.25rem,
   "mobile": 1.25rem,
   "tablet": 2rem,
 );
 
+// Mixin for font styles
 @mixin font($weight, $size, $line-height, $letter-spacing: -1.2px) {
   font-weight: $weight;
   font-size: $size;
@@ -41,84 +44,24 @@ $font-size-span-em: (
   letter-spacing: $letter-spacing;
 }
 
-$font-base: "GT America", sans-serif;
-$font-base-Md: "GT America Md", sans-serif;
+// Fonts
+$font-base: "Manrope", sans-serif;
 $font-Mono: "GT America Mono", monospace;
-$font-italic: "HAL Timezone italic", serif;
-
-* {
-  cursor: none !important;
-}
-
-h1 {
-  @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
-  font-family: $font-base-Md;
-}
-
-h2 {
-  @include font(400, map-get($font-size-h2, "desktop"), 1, -6.4);
-  font-family: $font-base;
-}
-
-h3 {
-  @include font(400, map-get($font-size-h3, "desktop"), 1, -2.4);
-  font-family: $font-base;
-}
-
-span {
-  @include font(700, map-get($font-size-span-em, "desktop"), 1, normal);
-  font-family: $font-italic;
-}
-
-p {
-  @include font(400, map-get($font-size-p, "desktop"), 1, -2.4);
-  font-family: $font-base;
-}
-
-@media screen and (max-width: 768px) {
-  h1 {
-    @include font(400, map-get($font-size-h2, "mobile"), 1, -6.4);
-  }
-  h2 {
-    @include font(400, map-get($font-size-h2, "mobile"), 1, -6.4);
-  }
-  h3 {
-    @include font(400, map-get($font-size-h3, "mobile"), 1, -2.4);
-  }
-  span {
-    @include font(700, map-get($font-size-span-em, "mobile"), 1, normal);
-  }
-  p {
-    @include font(400, map-get($font-size-p, "mobile"), 1, -2.4);
-  }
-}
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  h1 {
-    @include font(400, map-get($font-size-h2, "tablet"), 1, -6.4);
-  }
-  h2 {
-    @include font(400, map-get($font-size-h2, "tablet"), 1, -6.4);
-  }
-  h3 {
-    @include font(400, map-get($font-size-h3, "tablet"), 1, -2.4);
-  }
-  span {
-    @include font(700, map-get($font-size-span-em, "tablet"), 1, normal);
-  }
-  p {
-    @include font(400, map-get($font-size-p, "tablet"), 1, -2.4);
-  }
-}
+$font-serif: "STIX Two Text", serif;
 
 /* ====================================
-// reset rules
+// Reset Rules
 // ==================================== */
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  cursor: none;
+  &::selection {
+    background-color: $btw-black;
+    color: $btw-white;
+  }
 }
 
 html {
@@ -138,6 +81,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  @include font(inherit, inherit, inherit, inherit);
+  font-family: inherit;
 }
 
 img,
@@ -148,15 +93,16 @@ video {
 }
 
 /* ====================================
-// base rules
+// Base Rules
 // ==================================== */
+
 .lobster {
   display: block;
   position: fixed;
   bottom: 20px;
   right: 30px;
   z-index: 10000;
-  @include font(400, 36px, 1.5, -2.4);
+  @include font(600, 36px, 1.5, -1.4);
   font-family: $font-base;
   &:hover {
     animation: wiggle 0.1ms infinite linear;
@@ -189,4 +135,86 @@ video {
   $font-size-h3: 2rem;
   $font-size-span-em: 1.5rem;
   $font-size-p: 1rem;
+}
+
+/* ====================================
+// Media Queries
+// ==================================== */
+
+@mixin media($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media screen and (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @media screen and (min-width: 1025px) {
+      @content;
+    }
+  }
+}
+
+h1 {
+  @include font(500, map-get($font-size-h2, "desktop"), 1, -2.4);
+  font-family: $font-base;
+}
+
+h2 {
+  @include font(500, map-get($font-size-h2, "desktop"), 1, -2.4);
+  font-family: $font-base;
+}
+
+h3 {
+  @include font(500, map-get($font-size-h3, "desktop"), 1, -1);
+  font-family: $font-base;
+}
+
+span {
+  @include font(600, map-get($font-size-span-em, "desktop"), 1, normal);
+  font-family: $font-serif;
+  color: $btw-pink;
+}
+
+p {
+  @include font(500, map-get($font-size-p, "desktop"), 1, auto);
+  font-family: $font-base;
+}
+
+@include media("mobile") {
+  h1 {
+    @include font(500, map-get($font-size-h2, "mobile"), 1, -2.4);
+  }
+  h2 {
+    @include font(500, map-get($font-size-h2, "mobile"), 1, -2.4);
+  }
+  h3 {
+    @include font(500, map-get($font-size-h3, "mobile"), 1, -1);
+  }
+  span {
+    @include font(600, map-get($font-size-span-em, "mobile"), 1, normal);
+  }
+  p {
+    @include font(500, map-get($font-size-p, "mobile"), 1, -2.4);
+  }
+}
+
+@include media("tablet") {
+  h1 {
+    @include font(500, map-get($font-size-h2, "tablet"), 1, -6.4);
+  }
+  h2 {
+    @include font(500, map-get($font-size-h2, "tablet"), 1, -6.4);
+  }
+  h3 {
+    @include font(500, map-get($font-size-h3, "tablet"), 1, -2.4);
+  }
+  span {
+    @include font(600, map-get($font-size-span-em, "tablet"), 1, normal);
+  }
+  p {
+    @include font(500, map-get($font-size-p, "tablet"), 1, -2.4);
+  }
 }
