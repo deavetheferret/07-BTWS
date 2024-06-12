@@ -37,16 +37,15 @@ $font-size-span-em: (
 );
 
 // Mixin for font styles
-@mixin font($weight, $size, $line-height, $letter-spacing: -1.2px) {
+@mixin font($weight, $size, $letter-spacing: 1px) {
   font-weight: $weight;
   font-size: $size;
-  line-height: $line-height;
   letter-spacing: $letter-spacing;
 }
 
 // Fonts
 $font-base: "Manrope", sans-serif;
-$font-Mono: "GT America Mono", monospace;
+$font-mono: "IBM Plex Mono", monospace;
 $font-serif: "STIX Two Text", serif;
 
 /* ====================================
@@ -81,7 +80,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  @include font(inherit, inherit, inherit, inherit);
+  @include font(inherit, inherit, inherit);
   font-family: inherit;
 }
 
@@ -96,38 +95,42 @@ video {
 // Base Rules
 // ==================================== */
 
+.high-lob {
+  display: block;
+  position: absolute;
+  width: 125px;
+  top: 20px;
+  left: 35px;
+  z-index: 10000;
+}
+
 .lobster {
   display: block;
   position: fixed;
+  width: 125px;
   bottom: 20px;
-  right: 30px;
+  right: 35px;
   z-index: 10000;
-  @include font(600, 36px, 1.5, -1.4);
-  font-family: $font-base;
+
   &:hover {
-    animation: wiggle 0.1ms infinite linear;
+    animation: bump 1s infinite cubic-bezier(0, 0, 0, 1);
   }
-  @keyframes wiggle {
+  @keyframes bump {
     0% {
-      transform: rotate(0deg) scale(1.1);
-    }
-    25% {
-      transform: rotate(-10deg) scale(1);
+      transform: scale(1);
     }
     50% {
-      transform: rotate(0deg) scale(1.1);
-    }
-    75% {
-      transform: rotate(10deg) scale(1.2);
+      transform: scale(1.1);
     }
     100% {
-      transform: rotate(0deg) scale(1.1);
+      transform: scale(1);
     }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .cursor {
+  .cursor,
+  .cursor-tail {
     display: none;
   }
   $font-size-h1: 4rem;
@@ -158,63 +161,62 @@ video {
 }
 
 h1 {
-  @include font(500, map-get($font-size-h2, "desktop"), 1, -2.4);
+  @include font(500, map-get($font-size-h2, "desktop"), -2.4);
   font-family: $font-base;
 }
 
 h2 {
-  @include font(500, map-get($font-size-h2, "desktop"), 1, -2.4);
+  @include font(500, map-get($font-size-h2, "desktop"), -2.4);
   font-family: $font-base;
 }
 
 h3 {
-  @include font(500, map-get($font-size-h3, "desktop"), 1, -1);
+  @include font(500, map-get($font-size-h3, "desktop"), -1);
   font-family: $font-base;
 }
 
 span {
-  @include font(600, map-get($font-size-span-em, "desktop"), 1, normal);
+  @include font(600, map-get($font-size-span-em, "desktop"), normal);
   font-family: $font-serif;
-  color: $btw-pink;
 }
 
 p {
-  @include font(500, map-get($font-size-p, "desktop"), 1, auto);
+  @include font(500, map-get($font-size-p, "desktop"), auto);
   font-family: $font-base;
 }
 
 @include media("mobile") {
   h1 {
-    @include font(500, map-get($font-size-h2, "mobile"), 1, -2.4);
+    @include font(500, map-get($font-size-h2, "mobile"), -2.4);
   }
   h2 {
-    @include font(500, map-get($font-size-h2, "mobile"), 1, -2.4);
+    @include font(500, map-get($font-size-h2, "mobile"), -2.4);
   }
   h3 {
-    @include font(500, map-get($font-size-h3, "mobile"), 1, -1);
+    @include font(500, map-get($font-size-h3, "mobile"), -1);
   }
   span {
-    @include font(600, map-get($font-size-span-em, "mobile"), 1, normal);
+    @include font(600, map-get($font-size-span-em, "mobile"), normal);
   }
   p {
-    @include font(500, map-get($font-size-p, "mobile"), 1, -2.4);
+    @include font(500, map-get($font-size-p, "mobile"), -2.4);
   }
 }
 
 @include media("tablet") {
   h1 {
-    @include font(500, map-get($font-size-h2, "tablet"), 1, -6.4);
+    @include font(500, map-get($font-size-h2, "tablet"), -2.4);
   }
   h2 {
-    @include font(500, map-get($font-size-h2, "tablet"), 1, -6.4);
+    @include font(500, map-get($font-size-h2, "tablet"), -2.4);
   }
   h3 {
-    @include font(500, map-get($font-size-h3, "tablet"), 1, -2.4);
+    @include font(500, map-get($font-size-h3, "tablet"), -2.4);
   }
   span {
-    @include font(600, map-get($font-size-span-em, "tablet"), 1, normal);
+    @include font(600, map-get($font-size-span-em, "tablet"), normal);
   }
   p {
-    @include font(500, map-get($font-size-p, "tablet"), 1, -2.4);
+    @include font(500, map-get($font-size-p, "tablet"), -2.4);
   }
 }

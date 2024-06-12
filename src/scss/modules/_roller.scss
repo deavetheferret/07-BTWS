@@ -37,7 +37,7 @@
     bottom: -100%;
     background-color: $btw-pink;
     z-index: -1;
-    transition: all 0.3s cubic-bezier(1, 0.44, 0, 1);
+    transition: all 0.3s cubic-bezier(1, 0, 0, 1);
     transition-delay: 0.15s;
   }
 
@@ -53,6 +53,15 @@
   &.aiaiai {
     &::after {
       background-color: $ai-green;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .roller {
+    .roller-head-container {
+      flex-direction: column;
+      gap: 10px;
     }
   }
 }

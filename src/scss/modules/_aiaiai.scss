@@ -1,0 +1,90 @@
+html.aiaiai {
+  cursor: auto !important;
+  background-color: $btw-black;
+  color: #fff;
+  font-family: $font-mono !important;
+  padding: 35px 35px;
+  height: 100vh;
+  * {
+    cursor: auto;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    img {
+      width: auto;
+      height: 2.5rem;
+    }
+    .back {
+      transition: transform 0.3s;
+      font-family: $font-base;
+      font-weight: 500;
+      font-size: map-get($font-size-span-em, "desktop");
+      &:hover {
+        transform: scale(1.1);
+        color: $ai-green;
+      }
+    }
+  }
+
+  main {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    p,
+    #response {
+      font-family: $font-mono !important;
+      font-size: 2rem;
+      letter-spacing: 0px;
+      font-weight: 400;
+      em {
+        color: $ai-green;
+        font-style: normal;
+      }
+    }
+    input {
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    #cmd {
+      background: black;
+      color: $ai-green;
+      overflow: hidden;
+      width: 100%;
+      cursor: pointer;
+    }
+    #cmd span {
+      float: left;
+      padding-left: 3px;
+      white-space: pre;
+      font-family: $font-mono !important;
+      font-size: 2rem !important;
+      font-weight: 400;
+    }
+
+    #response {
+      position: absolute;
+      bottom: 20vh;
+    }
+
+    #cursor {
+      float: left;
+      width: 0.5rem;
+      height: 2.5rem;
+      margin-left: 5px;
+      background: $ai-green;
+    }
+  }
+}

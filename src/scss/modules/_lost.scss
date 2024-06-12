@@ -12,6 +12,8 @@
     right: 35px;
     z-index: 100;
     transition: transform 0.3s;
+    font-family: $font-base;
+    font-weight: 500;
     font-size: map-get($font-size-span-em, "desktop");
     &:hover {
       transform: scale(1.1);

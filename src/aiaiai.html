@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html class="aiaiai">
+  <head>
+    <meta charset="utf-8" />
+    <title>aiaiai — Preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="scss/main.scss" />
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div class="lobster-cursor"></div>
+    <a href="lost.html" class="lobster interactable"
+      ><img src="img/p-studio-w.svg" alt=""
+    /></a>
+    <header>
+      <img src="img/aiaiai-logo.svg" alt="" />
+      <a href="./" class="back interactable">Go back</a>
+    </header>
+    <main>
+      <p>
+        > Meet <em>aiaiai</em>, our new tool for companies and individuals.<br />Just
+        start by writting something...on the 1st of September 2024.
+      </p>
+      <div id="cmd">
+        <span></span>
+        <div id="cursor"></div>
+      </div>
+      <input type="text" name="command" value="" />
+      <span id="response"></span>
+    </main>
+
+    <script type="module" src="./js/aiaiai.js"></script>
+  </body>
+</html>

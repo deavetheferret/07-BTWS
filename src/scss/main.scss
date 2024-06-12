@@ -2,9 +2,10 @@
 @import "layout";
 @import "modules/roller";
 @import "modules/cursor";
-@import "modules/home";
 @import "modules/footer";
 @import "modules/lost";
+@import "modules/home";
+@import "modules/aiaiai";
 
 //======>> Fonts <<======//
 @font-face {
@@ -12,9 +13,6 @@
   src: url(../fonts/Manrope-Variable.woff2);
 }
 
-@font-face {
-  font-family: "GT America Mono";
-  src: url(../fonts/GT-America-Mono-Regular-Trial.woff2);
-}
-
 @import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
