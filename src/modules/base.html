@@ -1,0 +1,61 @@
+<div class="cursor"></div>
+<div class="cursor-tail"></div>
+<header>
+  <a href="./" class="logo interactable">
+    <img src="../img/btw-logo.svg" alt="" />
+  </a>
+  <div class="header-tools">
+    <a href="../aiaiai.html" class="aiaiai-compagnon"> Des questions ?</a>
+    <div class="lang-switcher">
+      <a href="#" class="active">fr</a>|
+      <a href="#">de</a>
+    </div>
+    <a href="#" class="menu-trigger">Menu</a>
+  </div>
+</header>
+<nav class="menu">
+  <include
+    src="modules/roller.html"
+    locals='{
+    "RollerLink": "projets.html",
+    "RollerClass": "",
+    "RollerTitle": "Projets",
+    "RollerSubtitle": "",
+    "RollerImg": "#"
+  }'
+  >
+  </include>
+  <include
+    src="modules/roller.html"
+    locals='{
+    "RollerLink": "services.html",
+    "RollerClass": "Services",
+    "RollerTitle": "Services",
+    "RollerSubtitle": "",
+    "RollerImg": "#"
+  }'
+  >
+  </include>
+  <include
+    src="modules/roller.html"
+    locals='{
+    "RollerLink": "about.html",
+    "RollerClass": "aiaiai",
+    "RollerTitle": "A propos de nous",
+    "RollerSubtitle": "",
+    "RollerImg": "#"
+  }'
+  >
+  </include>
+  <include
+    src="modules/roller.html"
+    locals='{
+    "RollerLink": "../index.html",
+    "RollerClass": "",
+    "RollerTitle": "The root",
+    "RollerSubtitle": "Retour en arrière",
+    "RollerImg": "#"
+  }'
+  >
+  </include>
+</nav>

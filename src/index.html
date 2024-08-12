@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>bytheway.studio — The root</title>
+    <title>bytheway.studio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -22,21 +22,30 @@
     /></a>
     <div class="news">
       <div class="placeholder"></div>
-      <!-- <span class="volatile">Good things take time</span> -->
     </div>
     <nav>
-      <a href="BTWS-CDP.pdf" class="roller interactable">
-        <div class="roller-head-container">
-          <h2 class="roller-title">bytheway</h2>
-          <span class="roller-subtitle">News here</span>
-        </div>
-      </a>
-      <a href="aiaiai.html" class="roller interactable aiaiai">
-        <div class="roller-head-container">
-          <h2 class="roller-title">aiaiai</h2>
-          <span class="roller-subtitle">On its way</span>
-        </div>
-      </a>
+      <include
+        src="modules/roller.html"
+        locals='{
+        "RollerLink": "bytheway/index.html",
+        "RollerClass": "",
+        "RollerTitle": "bytheway",
+        "RollerSubtitle": "Graphic Design · Events · Video",
+        "RollerImg": "#"
+      }'
+      >
+      </include>
+      <include
+        src="modules/roller.html"
+        locals='{
+        "RollerLink": "aiaiai.html",
+        "RollerClass": "aiaiai",
+        "RollerTitle": "aiaiai",
+        "RollerSubtitle": "Your brand new friend",
+        "RollerImg": "#"
+      }'
+      >
+      </include>
     </nav>
 
     <div class="partner">
